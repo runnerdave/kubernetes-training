@@ -7,7 +7,7 @@
 -   pods: definition files for Pods
 -   replicasets: definition files for ReplicaSets
 -   deployments: definition files for Deployments
--   Services: definition files for Services
+-   services: definition files for Services
 
 ## pre-requisites
 
