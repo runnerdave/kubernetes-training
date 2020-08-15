@@ -8,6 +8,7 @@ Sample distributed app with 5 components
 
 ## Commands:
 
+### manually without deployments
 Deploy all pods and services:
 
     kubectl create -f postgres-pod.yaml
@@ -19,6 +20,19 @@ Deploy all pods and services:
     kubectl create -f voting-app-pod.yaml
     kubectl create -f voting-app-service.yaml
     kubectl create -f worker-app-pod.yaml
+
+### with deployments
+Create all deployments and services with kubectl
+
+    kubectl create -f voting-app-deployment.yaml
+    kubectl create -f voting-app-service.yaml
+    kubectl create -f postgres-deployment.yaml
+    kubectl create -f postgres-service.yaml
+    kubectl create -f redis-deployment.yaml
+    kubectl create -f redis-service.yaml
+    kubectl create -f result-app-deployment.yaml
+    kubectl create -f result-app-service.yaml
+
 
 Then inspect the creation of all components:
 
@@ -49,3 +63,10 @@ voting app:
 results app:
     voting-app:$ minikube service result-service --url
     http://192.168.99.100:30005
+
+## Scaling the app
+
+If you have used deployments to create the apps you can scale it like this:
+
+    voting-app:$ kubectl scale deployment voting-app-deploy --replicas=3
+    deployment.extensions/voting-app-deploy scaled
